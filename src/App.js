@@ -79,6 +79,9 @@ function filterBlockOptions(allOptions, blockNumber, name, allSelections) {
       .filter((v) => filterNoPICUBlock9(v, blockNumber))
       .filter((v) => oneMICUPerBlock(v, blockNumber, name, allSelections))
       .filter((v) =>
+        twoOffRotationPerBlock(v, blockNumber, name, allSelections)
+      )
+      .filter((v) =>
         filterMax3VacationsInBlock(v, blockNumber, name, allSelections)
       );
   }
@@ -185,6 +188,19 @@ function oneMICUPerBlock(blockName, blockNumber, name, allSelections) {
   }
 }
 
+function twoOffRotationPerBlock(blockName, blockNumber, name, allSelections) {
+  const selectedThisBlock = getSelectedFromBlock(allSelections, blockNumber);
+
+  if (
+    isOffRotation(blockName) &&
+    selectedThisBlock.filter((item) => item === blockName).length >= 2
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 function filterMax3VacationsInBlock(
   blockName,
   blockNumber,
@@ -222,7 +238,7 @@ function onSelected(name, blockNumber, allSelections, setSelections, event) {
 }
 
 function makeHeaders(numberOfBlocks) {
-  const nameHeader = <th>Doctor</th>;
+  const nameHeader = <th>Name</th>;
   const blockHeaders = allShiftOptions.map((option, index) => (
     <th>{index + 1}</th>
   ));

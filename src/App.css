@@ -23,3 +23,42 @@ th,
 td {
   padding: 15px;
 }
+
+.table-wrapper {
+  padding: 2rem;
+  max-width: 90%;
+  overflow-x: auto;
+}
+
+select[class=""] {
+  background-color: black;
+  color: white;
+}
+
+select[class^="ED"] {
+  background-color: rgb(255, 255, 255);
+}
+
+select[class^="ED Valley"] {
+  background-color: rgb(255, 255, 255);
+}
+
+select[class^="TOX"] {
+  background-color: rgb(159, 254, 158);
+}
+
+select[class^="MICU"] {
+  background-color: rgb(255, 250, 118);
+}
+
+select[class^="CCU"] {
+  background-color: rgb(252, 173, 173);
+}
+
+select[class^="PICU"] {
+  background-color: rgb(252, 173, 234);
+}
+
+select[class^="Elective"] {
+  background-color: rgb(180, 173, 252);
+}

@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/snake-draft/static/css/main.d1540ac4.chunk.css",
+    "main.js": "/snake-draft/static/js/main.5461f33c.chunk.js",
+    "main.js.map": "/snake-draft/static/js/main.5461f33c.chunk.js.map",
+    "runtime-main.js": "/snake-draft/static/js/runtime-main.18e67a19.js",
+    "runtime-main.js.map": "/snake-draft/static/js/runtime-main.18e67a19.js.map",
+    "static/js/2.cc15726c.chunk.js": "/snake-draft/static/js/2.cc15726c.chunk.js",
+    "static/js/2.cc15726c.chunk.js.map": "/snake-draft/static/js/2.cc15726c.chunk.js.map",
+    "static/js/3.9b3ea4d2.chunk.js": "/snake-draft/static/js/3.9b3ea4d2.chunk.js",
+    "static/js/3.9b3ea4d2.chunk.js.map": "/snake-draft/static/js/3.9b3ea4d2.chunk.js.map",
+    "index.html": "/snake-draft/index.html",
+    "static/css/main.d1540ac4.chunk.css.map": "/snake-draft/static/css/main.d1540ac4.chunk.css.map",
+    "static/js/2.cc15726c.chunk.js.LICENSE.txt": "/snake-draft/static/js/2.cc15726c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.18e67a19.js",
+    "static/js/2.cc15726c.chunk.js",
+    "static/css/main.d1540ac4.chunk.css",
+    "static/js/main.5461f33c.chunk.js"
+  ]
+}

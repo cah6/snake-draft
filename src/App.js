@@ -4,16 +4,14 @@ import React, { useState } from "react";
 function App() {
   const [selections, setSelections] = useState(initSelections(doctors));
 
-  const rows = [];
+  console.log(selections);
 
-  for (let [name, selectedMap] of selections.entries()) {
-    rows.push(
-      <tr>
-        <td>{name}</td>
-        {makeSelectCells(selectedMap)}
-      </tr>
-    );
-  }
+  const rows = [...selections].map(([name, currentSelections]) => (
+    <tr>
+      <td>{name}</td>
+      {makeSelectCells(name, selections, setSelections, currentSelections)}
+    </tr>
+  ));
 
   return (
     <div className="App">
@@ -28,29 +26,26 @@ function App() {
   );
 }
 
-function makeSelectCells(selectedForUser) {
-  const cells = [];
-
-  const selectOptions = allShiftOptions.map((optionName) =>
-    makeSelectOption(optionName)
-  );
-
-  for (let [selected, blockNumber] of selectedForUser.entries()) {
-    cells.push(
-      <td>
-        <select>
-          <option value="">--</option>
-          {selectOptions}
-        </select>
-      </td>
-    );
-  }
-
-  return cells;
+function makeSelectCells(name, allSelections, setSelections, selectedForUser) {
+  return [...selectedForUser].map((selected, blockNumber) => (
+    <td>
+      <select
+        onChange={(e) =>
+          onSelected(name, blockNumber, allSelections, setSelections, e)
+        }
+      >
+        <option value="">--</option>
+        {allShiftOptions.map((optionName) => (
+          <option>{optionName}</option>
+        ))}
+      </select>
+    </td>
+  ));
 }
 
-function makeSelectOption(optionName) {
-  return <option value={optionName}>{optionName}</option>;
+function onSelected(name, blockNumber, allSelections, setSelections, event) {
+  allSelections.get(name).set(blockNumber, event.target.value);
+  setSelections(new Map(allSelections));
 }
 
 function makeHeaders(numberOfBlocks) {
@@ -74,7 +69,7 @@ function initSelections(names) {
 
 function initEmptySchedules() {
   const map = new Map();
-  allShiftOptions.forEach((option, index) => map.set(index + 1, ""));
+  allShiftOptions.forEach((option, index) => map.set(index, ""));
   return map;
 }
 
@@ -85,13 +80,13 @@ const allShiftOptions = [
   "ED",
   "ED",
   "ED",
-  "ED (vacation)",
+  "ED 🏝",
   "ED Valley",
   "Elective",
   "CCU",
   "PICU",
   "MICU",
-  "TOX/Elective",
+  "TOX/Elec",
 ];
 
 const doctors = [
